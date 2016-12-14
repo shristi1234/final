@@ -1,0 +1,209 @@
+print ("WElcome to the prudent health care center")
+
+file = "dic.txt"
+
+
+def register(patient_id, first_name, last_name, address, gender, contact, date_birth):
+    fw = open('dic.txt', "a")
+    fw.write("%1s%20s%20s%20s%20s%20s%20s\n" % (patient_id, first_name, last_name, address, gender, contact, date_birth))
+    fw.close()
+
+
+
+
+textfile = "data.txt"
+
+def cost(invoice_id, patient_id, treatment_id, Bill_amount):
+    fw = open('data.txt', "w")
+    fw.write("%1s%20s%15s%20s\n" % (invoice_id, patient_id, treatment_id, Bill_amount))
+    fw.close()
+
+def credit(credit_no, patient_id, treatment_id, Bill_amount):
+    fw = open('data.txt', "w")
+    fw.write("%1s%20s%20s%20s\n" % (credit_no, patient_id, treatment_id, Bill_amount))
+    fw.close()
+
+
+
+
+def payment():
+
+    print("For cash Enter 1")
+    print("For credit Enter 2")
+    payment = raw_input("finish the payment")
+    if payment == "1":
+        print("payment by cash")
+        invoice_id = raw_input("enter your invoice id:")
+        print (invoice_id)
+        patient_id = raw_input("enter patient id:")
+        print (patient_id)
+        Bill_amount = raw_input("enter bill amount:")
+        print (Bill_amount)
+        treatment_id =raw_input("enter treatment id:")
+        print (treatment_id)
+        cost(invoice_id, patient_id, treatment_id, Bill_amount )
+        print("Thank you")
+
+    elif payment == "2":
+        print("payment done by credit")
+        credit_no = raw_input("Please enter the credit card number")
+        print(credit_no)
+        patient_id = raw_input("enter patient id:")
+        print (patient_id)
+        patient_id = raw_input("enter patient id:")
+        print (patient_id)
+        Bill_amount = raw_input("enter bill amount:")
+        print (Bill_amount)
+        treatment_id = raw_input("enter treatment id:")
+        print (treatment_id)
+        credit(credit_no, patient_id, treatment_id, Bill_amount)
+
+        print("Thank you")
+    else:
+        print("not paid and go for payment")
+        print("Thank You")
+
+
+
+def registration():
+    patient_id = raw_input("Enter patient_id:")
+    print (patient_id)
+    first_name =raw_input("Enter your first_name:")
+    print (first_name)
+    last_name = raw_input("Enter your last name:")
+    print (last_name)
+    address = raw_input("Enter your address:")
+    print (address)
+    gender = raw_input("Enter your gender: ")
+    print (gender)
+    contact = raw_input("Enter your contact number:")
+    print (contact)
+    date_birth = raw_input("date of birth:")
+    print (date_birth)
+    register(patient_id, first_name, last_name, address, gender, contact, date_birth)
+    print("THANK YOU!!!")
+    print("\nUser created!\n")
+
+
+file = "doc.txt"
+
+def record(select_doctor,):
+    fw = open('doc.txt', "a")
+    fw.write("%1s\n" % (select_doctor, ))
+    fw.close()
+
+def writes(appointment_id, patient_id, status):
+    fw = open('doc.txt', "a")
+    fw.write("%1s%20s%20s\n" % (appointment_id, patient_id, status))
+    fw.close()
+
+
+
+def appointment():
+    print("Book an appointment")
+    appointment_id=raw_input("enter appointment id:")
+    print (appointment_id)
+    patient_id = raw_input("enter your patient id:")
+    print (patient_id)
+    status = raw_input("enter status:")
+    print (status)
+    writes(appointment_id, patient_id, status)
+
+
+    print("List of specialists")
+    print("1. Dr.shristi")
+    print("2. Dr.Nirmita")
+
+
+
+
+
+    # This is for Doctor A
+    select_doctor = raw_input("Choose your doctor\n")
+
+    if select_doctor == "1":
+
+        record("Dr. Shristi")
+
+
+
+        print("Dr.shristi \n a. 08:00AM-09:00AM \n b.12:00AM-01:00PM \n c. 03:00PM-04:00PM")
+
+        your_time = raw_input("Favouralbe time")
+        if your_time == "a":
+            print("a. 08:00AM-09:00AM")
+
+
+        elif your_time == "b":
+            print("b. 12:00AM-01:00PM")
+
+        elif your_time == "c":
+            print("c. 03:00PM-04:00PM")
+
+
+        else:
+            print("Not available")
+
+            # This is for Doctor B
+
+    elif select_doctor == "2":
+        record("Dr. Nirmita")
+
+        print("Dr.Nirmita \n a. 09:30AM-10:30AM\n b. 01:30PM-02:30PM \n c. 03:30PM-04:30PM")
+
+        your_time = raw_input("Favouralbe time")
+        if your_time == "a":
+            print("a. 09:30AM-10:30AM")
+        elif your_time == "b":
+            print("b. 01:30PM-02:30PM")
+        elif your_time == "c":
+            print("c. 03:30PM-04:30PM")
+        else:
+            print("Not available")
+
+def users():
+    print("Login Page")
+    status = ""
+
+print("Are you \n1.Physian\n2.Accountant")
+status = raw_input("User")
+
+if status =="1":
+    login =raw_input("enter your username:")
+    password =raw_input("enter your password:")
+    print ("welcome for process,you are physician")
+    while True:
+        users=raw_input("1.registration\n2.appointment\n3.exit")
+        if users=="1":
+            registration()
+        elif users=="2":
+            appointment()
+
+        elif users == "3":
+            exit()
+            break
+
+        else:
+            print("wrong choice")
+
+
+elif status == "2":
+
+    login = raw_input("enter your username:")
+    password = raw_input("enter your password:")
+    print ("welcome for process,you are Accountant")
+    while True:
+        users = raw_input("1.payment\n2.exit")
+        if users == "1":
+            payment()
+
+        elif users == "2":
+            break
+
+            print ("Quite")
+
+
+def logout():
+    print("logout")
+
+
